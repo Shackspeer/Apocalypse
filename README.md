@@ -4,25 +4,25 @@
 
 > Apocalypse is a web application wrapper.
 
-## Proje Hakkında
-Apocalypse, web tabanlı müzik dinleme platformunuzu doğrudan işletim sistemine entegre eden, Electron tabanlı hızlı ve hafif bir masaüstü istemcisidir. Uygulama, arka planda Chromium motorunu kullanarak hedef web adresini bağımsız bir pencereye sarar ve kullanıcıya standart bir web tarayıcısından bağımsız, pürüzsüz bir masaüstü deneyimi sunar.
+## About the Project
+Apocalypse is a fast and lightweight Electron-based desktop client that seamlessly integrates your web-based music platform directly into the operating system. By utilizing the Chromium engine in the background, it wraps the target web address into an independent window, providing a smooth, dedicated desktop experience completely separate from a standard web browser.
 
-## Temel Özellikler
-*   **İzole Masaüstü Deneyimi:** Tarayıcı sekmeleri arasında kaybolmadan, doğrudan amaca hizmet eden bağımsız arayüz.
-*   **Sistem Tepsisi (Tray) Desteği:** Uygulama kapatıldığında görev çubuğuna (sağ alt köşe) gizlenerek arka planda müzik çalmaya devam eder.
-*   **Tek Instance Kilidi:** Uygulamanın aynı anda birden fazla kopyasının açılmasını engeller, tekrarlı tıklamalarda mevcut pencereyi öne getirir.
-*   **Kolay Kurulum:** Özelleştirilmiş NSIS yapılandırması sayesinde dizin seçimine izin veren standart Windows Setup (`.exe`) aracı.
+## Key Features
+*   **Isolated Desktop Experience:** A dedicated, standalone interface free from browser tabs and distractions.
+*   **System Tray Integration:** When closed, the application minimizes to the system tray (bottom right corner) and continues playing music in the background.
+*   **Single Instance Lock:** Prevents multiple copies of the application from opening simultaneously. Clicking the shortcut again will bring the existing window to the front.
+*   **Easy Installation:** Features a standard Windows Setup (`.exe`) wizard with custom directory selection, powered by a tailored NSIS configuration.
 
-## Geliştirme ve Kurulum
+## Development & Installation
 
-Projeyi bilgisayarınızda çalıştırmak veya yeniden derlemek için aşağıdaki adımları izleyebilirsiniz.
+Follow the steps below to run or build the project on your local machine.
 
-### Gereksinimler
-*   [Node.js](https://nodejs.org/) (Sisteminizde yüklü olmalıdır)
+### Prerequisites
+*   [Node.js](https://nodejs.org/) (Must be installed on your system)
 
-### Kurulum Adımları
+### Setup Instructions
 
-1. **Bağımlılıkları Yükleyin:**
-   Kütüphaneleri ve Electron çekirdeğini indirmek için terminalde çalıştırın:
+1. **Install Dependencies:**
+   Run the following command in your terminal to download the required packages and the Electron core:
    ```bash
    npm install
