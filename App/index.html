@@ -1,0 +1,241 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline'; img-src 'self' data:;" />
+    <title>Apocalypse</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg:        #0a090f;
+            --surface:   #110f1a;
+            --border:    rgba(140, 80, 255, 0.18);
+            --accent1:   #9b59f5;
+            --accent2:   #e040fb;
+            --text:      #e8e0f8;
+            --muted:     rgba(232, 224, 248, 0.45);
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            width: 100vw; height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden;
+            -webkit-app-region: drag;
+        }
+
+        /* Animated background orbs */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+            opacity: 0.35;
+        }
+        .orb-1 {
+            width: 420px; height: 420px;
+            background: radial-gradient(circle, #7b2ff7, transparent);
+            top: -120px; left: -80px;
+            animation: float1 9s ease-in-out infinite;
+        }
+        .orb-2 {
+            width: 320px; height: 320px;
+            background: radial-gradient(circle, #e040fb, transparent);
+            bottom: -100px; right: -60px;
+            animation: float2 11s ease-in-out infinite;
+        }
+        @keyframes float1 {
+            0%,100% { transform: translate(0,0) scale(1); }
+            50%      { transform: translate(30px, 40px) scale(1.08); }
+        }
+        @keyframes float2 {
+            0%,100% { transform: translate(0,0) scale(1); }
+            50%      { transform: translate(-25px, -30px) scale(1.06); }
+        }
+
+        /* Panel */
+        .panel {
+            -webkit-app-region: no-drag;
+            position: relative;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 52px 48px 44px;
+            width: min(480px, 92vw);
+            backdrop-filter: blur(12px);
+            box-shadow:
+                0 0 0 1px rgba(155,89,245,0.08),
+                0 32px 80px rgba(0,0,0,0.55),
+                0 0 60px rgba(120,47,247,0.12);
+            animation: panel-appear 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+            opacity: 0;
+            transform: translateY(24px);
+        }
+        @keyframes panel-appear {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Logo row */
+        .logo-row {
+            display: flex; align-items: center; gap: 14px;
+            margin-bottom: 36px;
+        }
+        .logo-row img {
+            width: 44px; height: 44px;
+            border-radius: 10px;
+            filter: drop-shadow(0 0 10px rgba(155,89,245,0.5));
+        }
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, var(--accent1), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Heading */
+        h1 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--muted);
+            margin-bottom: 24px;
+            line-height: 1.5;
+            letter-spacing: 0.01em;
+        }
+
+        /* Input group */
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .input-group .icon {
+            position: absolute;
+            left: 16px; top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.45;
+            pointer-events: none;
+            font-size: 1rem;
+        }
+        .url-input {
+            width: 100%;
+            background: rgba(255,255,255,0.04);
+            border: 1.5px solid var(--border);
+            border-radius: 14px;
+            color: var(--text);
+            font-family: inherit;
+            font-size: 0.95rem;
+            padding: 15px 18px 15px 44px;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+        .url-input::placeholder { color: var(--muted); }
+        .url-input:focus {
+            border-color: var(--accent1);
+            background: rgba(155,89,245,0.06);
+            box-shadow: 0 0 0 3px rgba(155,89,245,0.15);
+        }
+
+        /* Button */
+        .launch-btn {
+            width: 100%;
+            padding: 15px 24px;
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            color: #fff;
+            background: linear-gradient(135deg, var(--accent1) 0%, var(--accent2) 100%);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.15s, box-shadow 0.2s;
+            box-shadow: 0 4px 24px rgba(155,89,245,0.35);
+        }
+        .launch-btn::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(135deg, #b07aff 0%, #ff6ef7 100%);
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .launch-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(155,89,245,0.5); }
+        .launch-btn:hover::before { opacity: 1; }
+        .launch-btn:active { transform: translateY(0); box-shadow: 0 2px 12px rgba(155,89,245,0.3); }
+        .launch-btn span { position: relative; z-index: 1; }
+
+        /* Divider hint */
+        .hint {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.78rem;
+            color: var(--muted);
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <div class="panel" id="panel">
+        <div class="logo-row">
+            <img src="./icon.png" alt="Apocalypse" />
+            <span class="logo-text">Apocalypse</span>
+        </div>
+
+        <h1>Nereye gitmek istiyorsun?<br/>Bir URL gir, kalanı biz hallederiz.</h1>
+
+        <div class="input-group">
+            <span class="icon">🔗</span>
+            <input
+                type="text"
+                class="url-input"
+                id="urlInput"
+                placeholder="https://..."
+                spellcheck="false"
+                autocomplete="off"
+            />
+        </div>
+
+        <button class="launch-btn" id="launchBtn" onclick="launch()">
+            <span>⚡ Ignite the Apocalypse</span>
+        </button>
+
+        <p class="hint">Enter tuşuna basarak da başlatabilirsin</p>
+    </div>
+
+    <script>
+        const input = document.getElementById('urlInput');
+        const btn   = document.getElementById('launchBtn');
+
+        input.focus();
+
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') launch();
+        });
+
+        function launch() {
+            let url = input.value.trim();
+            if (!url) return;
+
+            // Auto-prepend https:// if missing
+            if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
+
+            btn.style.opacity = '0.7';
+            btn.style.pointerEvents = 'none';
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>
