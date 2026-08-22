@@ -1,7 +1,6 @@
 # Apocalypse
 
-![Apocalypse Logo](./App/icon.png)
-
+<img src="./App/icon.png" alt="Apocalypse Logo" width="200">
 > Apocalypse is a web application wrapper.
 
 ## About the Project
