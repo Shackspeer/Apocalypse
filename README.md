@@ -1,6 +1,6 @@
 # Apocalypse
 
-![Apocalypse Logo](./watermarked_img_8328755012108639381.jpg)
+![Apocalypse Logo](./App/icon.png)
 
 > Apocalypse is a web application wrapper.
 
