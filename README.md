@@ -10,7 +10,6 @@ Apocalypse is a fast and lightweight Electron-based desktop client that seamless
 ## Key Features
 *   **Isolated Desktop Experience:** A dedicated, standalone interface free from browser tabs and distractions.
 *   **System Tray Integration:** When closed, the application minimizes to the system tray (bottom right corner) and continues playing music in the background.
-*   **Single Instance Lock:** Prevents multiple copies of the application from opening simultaneously. Clicking the shortcut again will bring the existing window to the front.
 *   **Easy Installation:** Features a standard Windows Setup (`.exe`) wizard with custom directory selection, powered by a tailored NSIS configuration.
 
 ## Development & Installation
